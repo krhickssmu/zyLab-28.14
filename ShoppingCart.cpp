@@ -27,6 +27,7 @@ void ShoppingCart::RemoveItem(string name){
   for(int i=0; i<cartItems.size(); i++){
     if(cartItems.at(i).GetName() == name){
       cartItems.at(i) == null;
+     
       isFound = true;
       break;
     }
@@ -72,15 +73,25 @@ void ShoppingCart::PrintDescriptions(){
 }
 
 void ShoppingCart::ModifyItem(ItemToPurchase item){
+  bool isFound = false;
   string nameOf = item.GetName();
   for(int i=0; i<cartItems.size(); i++){
     if(nameOf == cartItems.at(i).GetName()){
-      //In the works
-    }
-    else{
-      cout << "Item not found in cart. Nothing removed." << endl;
+      isFound = true;
+       if(cartItems.at(i).GetDescription() != "none"){
+         cartItems.at(i).SetDescription(item.GetDescription());
+       }
+     if(cartItems.at(i).GetPrice() != 0){
+         cartItems.at(i).SetPrice(item.GetPrice());
+       }
+     if(cartItems.at(i).GetQuantity() != 0){
+         cartItems.at(i).SetQuantity(item.GetQuantity());
+       }
     }
   }
+ if(isFound == false){
+  cout << "Item not found in cart. Nothing modified." << endl;
+ }
 }
 
 
