@@ -1,16 +1,17 @@
+
 #ifndef ITEM_TO_PURCHASE_H
 #define ITEM_TO_PURCHASE_H
 
 
 #include <string>
+#include <iostream>
 using namespace std;
 
 class ItemToPurchase {
    
    public:
       ItemToPurchase();
-      ItemToPurchase(string name, string description, 
-                  int price, int quantity = 0);
+      ItemToPurchase(string name, string description,int price, int quantity);
       
       void SetName(string name);
       void SetDescription(string description);
