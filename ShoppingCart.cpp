@@ -81,13 +81,13 @@ void ShoppingCart::ModifyItem(ItemToPurchase item){
   for(int i=0; i<cartItems.size(); i++){
     if(nameOf == cartItems.at(i).GetName()){
       isFound = true;
-       if(cartItems.at(i).GetDescription() != "none"){
+       if(item.GetDescription() != "none"){
          cartItems.at(i).SetDescription(item.GetDescription());
        }
-     if(cartItems.at(i).GetPrice() != 0){
+     if(item.GetPrice() != 0){
          cartItems.at(i).SetPrice(item.GetPrice());
        }
-     if(cartItems.at(i).GetQuantity() != 0){
+     if(item.GetQuantity() != 0){
          cartItems.at(i).SetQuantity(item.GetQuantity());
        }
     }
