@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std;
 
@@ -10,7 +11,7 @@ ItemToPurchase::ItemToPurchase(){
   itemPrice=0;
   itemQuantity=0;
 }
-ItemToPurchase::ItemToPurchase(string name, string description, int price, int quantity = 0){
+ItemToPurchase::ItemToPurchase(string name, string description, int price, int quantity){
   itemName=name;
   itemDescription=description;
   itemPrice=price;
@@ -18,40 +19,37 @@ ItemToPurchase::ItemToPurchase(string name, string description, int price, int q
 }
 
 //setters
-void SetName(string name){
-  itemName = name;
+void ItemToPurchase::SetName(string name){
+  this->itemName = name;
 }
-void SetDescription(string description){
-  itemDescription = description;
+void ItemToPurchase::SetDescription(string description){
+  this->itemDescription = description;
 }
-void SetPrice(int price){
-  itemPrice = price;
+void ItemToPurchase::SetPrice(int price){
+  this->itemPrice = price;
 }
-void SetQuantity(int quantity){
-  itemQuantity = quantity;
+void ItemToPurchase::SetQuantity(int quantity){
+  this->itemQuantity = quantity;
 }
 
 //getters
-string GetName() const{
+string ItemToPurchase::GetName() const{
   return itemName;
 }
-string GetDescription() const{
+string ItemToPurchase::GetDescription() const{
   return itemDescription;
 }
-int GetPrice() const{
+int ItemToPurchase::GetPrice() const{
   return itemPrice;
 }
-int GetQuantity() const{
+int ItemToPurchase::GetQuantity() const{
   return itemQuantity;
 }
 
 //printers
-void PrintItemCost(){
-  cout<<itemName<<" "<<itemQuantity<<" @ $"<<cout<<itemPrice<<" = "<<itemQuantity*itemPrice<<endl;
+void ItemToPurchase::PrintItemCost(){
+  cout<<itemName<<" "<<itemQuantity<<" @ $"<<itemPrice<<" = $"<<itemQuantity*itemPrice<<endl;
 }
-void PrintItemDescription(){
+void ItemToPurchase::PrintItemDescription(){
   cout<<itemName<<": "<<itemDescription<<endl;
 }
-  
-   
-  

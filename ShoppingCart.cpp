@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "ShoppingCart.h"
  using namespace std;
@@ -47,17 +48,24 @@ int ShoppingCart::GetNumItemsInCart(){
 double ShoppingCart::GetCostOfCart(){
   double total = 0;
   for(int i=0; i<cartItems.size(); i++){
-    total = total + cartItems.at(i).GetPrice();
+    total = total + cartItems.at(i).GetPrice()*cartItems.at(i).GetQuantity();
   }
 return total;
 }
 
 void ShoppingCart::PrintTotal(){
   if(cartItems.size() == 0){
+    cout << "Number of Items: " << cartItems.size() << endl;
+    cout<<endl;
     cout << "SHOPPING CART IS EMPTY" << endl;
   }
   else{
-      cout << "Number of Items: " << cartItems.size() << endl;
+     int numItems=0;
+      for(int i=0; i<cartItems.size(); i++){
+         numItems=numItems+cartItems.at(i).GetQuantity();
+      }
+      cout << "Number of Items: " << numItems << endl;
+      cout<<endl;
       for(int i=0; i<cartItems.size(); i++){
        cartItems.at(i).PrintItemCost();
     }
@@ -81,13 +89,13 @@ void ShoppingCart::ModifyItem(ItemToPurchase item){
   for(int i=0; i<cartItems.size(); i++){
     if(nameOf == cartItems.at(i).GetName()){
       isFound = true;
-       if(cartItems.at(i).GetDescription() != "none"){
+       if(item.GetDescription() != "none"){
          cartItems.at(i).SetDescription(item.GetDescription());
        }
-     if(cartItems.at(i).GetPrice() != 0){
+     if(item.GetPrice() != 0){
          cartItems.at(i).SetPrice(item.GetPrice());
        }
-     if(cartItems.at(i).GetQuantity() != 0){
+     if(item.GetQuantity() != 0){
          cartItems.at(i).SetQuantity(item.GetQuantity());
        }
     }
@@ -96,5 +104,3 @@ void ShoppingCart::ModifyItem(ItemToPurchase item){
   cout << "Item not found in cart. Nothing modified." << endl;
  }
 }
-
-
