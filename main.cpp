@@ -12,11 +12,13 @@ void PrintMenu() {
    cout<<"i - Output items' descriptions"<<endl;
    cout<<"o - Output shopping cart"<<endl;
    cout<<"q - Quit"<<endl;  
+   cout<<endl;
 }
 
 void ExecuteMenu(char option, ShoppingCart& theCart) {
    if(option=='a'){
-      string newName, newDesc, newPrice, newQuant;
+      string newName, newDesc; 
+      int newPrice, newQuant;
       cout<<"ADD ITEM TO CART"<<endl;
       cout<<"Enter the item name:"<<endl;
       getline(cin,newName);
@@ -26,8 +28,10 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
       cin>>newPrice;
       cout<<"Enter the item quantity:"<<endl;
       cin>>newQuant;
-      ItemToPurchase newItem(newName, newDesc, newPrice, newQuant;
+      ItemToPurchase newItem(newName, newDesc, newPrice, newQuant);
       theCart.AddItem(newItem);
+      cout<<endl;
+
       
    }
    else if(option=='d'){
@@ -36,6 +40,8 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
       cout<<"Enter name of item to remove:"<<endl;
       getline(cin,deletedName);
       theCart.RemoveItem(deletedName);
+      cout<<endl;
+ 
    }
    else if(option=='c'){
       string name;
@@ -47,6 +53,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
       cin>>newQuant;
       ItemToPurchase newItem(name, "none", 0, newQuant);
       theCart.ModifyItem(newItem);
+      cout<<endl;
       
       
    }
@@ -54,8 +61,10 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
       cout<<"OUTPUT ITEMS' DESCRIPTIONS"<<endl;
       cout<<theCart.GetCustomerName()<<"'s Shopping Cart - "<<theCart.GetDate()<<endl;
       cout<<endl;
-      cout<"Item Descriptions"<<endl;
+      cout<<"Item Descriptions"<<endl;
       theCart.PrintDescriptions();
+      cout<<endl;
+     
    }
    else if(option=='o'){
       cout<<"OUTPUT SHOPPING CART"<<endl;
@@ -63,13 +72,11 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
       theCart.PrintTotal();
       cout<<endl;
       cout<<"Total: $"<<theCart.GetCostOfCart()<<endl;
-      
+      cout<<endl;   
    }
    else if(option=='q'){
-      break;
+   //done
    }
-   
-   
 }
 
 int main() {
@@ -78,29 +85,38 @@ int main() {
    char choice;
 
    
-   cout<<"Enter customer's name":<<endl;
+   cout<<"Enter customer's name:"<<endl;
    getline(cin, customer);
-   cout<<"Enter today's date:":<<endl;
+   cout<<"Enter today's date:"<<endl;
    getline(cin, date);
 
    cout<<endl;
    cout<<"Customer name: "<<customer<<endl;
    cout<<"Today's date: "<<date<<endl;
-
+   cout<<endl;
    ShoppingCart newCart= ShoppingCart(customer, date);
+   
+   PrintMenu();
 
    while(choice!='q'){
+       
+      bool repeat=true;
+      while(repeat){
+         cout<<"Choose an option:"<<endl;
+         cin>>choice;
+         cin.ignore();
+         if (choice=='a'||choice=='o'||choice=='i'||choice=='d'||choice=='q'||choice=='c'){
+          repeat=false;
+          }
+      }
       
-      PrintMenu();
-   
-      cin>>choice;
+      if(choice=='q'){
+         break;
+      }
    
       ExecuteMenu(choice, newCart);
+      PrintMenu();   
       
-   }
-   
-   
-   
-   
+   }  
    return 0;
 }
