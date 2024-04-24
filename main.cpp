@@ -16,14 +16,54 @@ void PrintMenu() {
 
 void ExecuteMenu(char option, ShoppingCart& theCart) {
    if(option=='a'){
+      string newName, newDesc, newPrice, newQuant;
+      cout<<"ADD ITEM TO CART"<<endl;
+      cout<<"Enter the item name:"<<endl;
+      getline(cin,newName);
+      cout<<"Enter the item description:"<<endl;
+      getline(cin, newDesc);
+      cout<<"Enter the item price:"<<endl;
+      cin>>newPrice;
+      cout<<"Enter the item quantity:"<<endl;
+      cin>>newQuant;
+      ItemToPurchase newItem(newName, newDesc, newPrice, newQuant;
+      theCart.AddItem(newItem);
+      
    }
    else if(option=='d'){
+      string deletedName;
+      cout<<"REMOVE ITEM FROM CART"<<endl;
+      cout<<"Enter name of item to remove:"<<endl;
+      getline(cin,deletedName);
+      theCart.RemoveItem(deletedName);
    }
    else if(option=='c'){
+      string name;
+      int newQuant;
+      cout<<"CHANGE ITEM QUANTITY"<<endl;
+      cout<<"Enter the item name:"<<endl;
+      getline(cin,name);
+      cout<<"Enter the new quantity:"<<endl;
+      cin>>newQuant;
+      ItemToPurchase newItem(name, "none", 0, newQuant);
+      theCart.ModifyItem(newItem);
+      
+      
    }
    else if(option=='i'){
+      cout<<"OUTPUT ITEMS' DESCRIPTIONS"<<endl;
+      cout<<theCart.GetCustomerName()<<"'s Shopping Cart - "<<theCart.GetDate()<<endl;
+      cout<<endl;
+      cout<"Item Descriptions"<<endl;
+      theCart.PrintDescriptions();
    }
    else if(option=='o'){
+      cout<<"OUTPUT SHOPPING CART"<<endl;
+      cout<<theCart.GetCustomerName()<<"'s Shopping Cart - "<<theCart.GetDate()<<endl;
+      theCart.PrintTotal();
+      cout<<endl;
+      cout<<"Total: $"<<theCart.GetCostOfCart()<<endl;
+      
    }
    else if(option=='q'){
       break;
