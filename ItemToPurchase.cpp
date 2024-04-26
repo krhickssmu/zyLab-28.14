@@ -1,4 +1,3 @@
-
 #include <iostream>
 using namespace std;
 
@@ -48,8 +47,10 @@ int ItemToPurchase::GetQuantity() const{
 
 //printers
 void ItemToPurchase::PrintItemCost(){
-  cout<<itemName<<" "<<itemQuantity<<" @ $"<<itemPrice<<" = $"<<itemQuantity*itemPrice<<endl;
+  cout<<itemName<<" "<<itemQuantity<<" @ $"<<itemPrice;
+  cout << " = $"<<itemQuantity*itemPrice<<endl;
 }
+
 void ItemToPurchase::PrintItemDescription(){
   cout<<itemName<<": "<<itemDescription<<endl;
 }

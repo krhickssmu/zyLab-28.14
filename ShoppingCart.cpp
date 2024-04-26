@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "ShoppingCart.h"
  using namespace std;
@@ -42,30 +41,30 @@ void ShoppingCart::RemoveItem(string name){
 }
 
 int ShoppingCart::GetNumItemsInCart(){
-  return cartItems.size();
+   int quantity = 0;
+   for(int i=0; i<cartItems.size(); i++){
+      quantity = quantity + cartItems.at(i).GetQuantity();
+   }
+  return quantity;
 }
 
 double ShoppingCart::GetCostOfCart(){
   double total = 0;
   for(int i=0; i<cartItems.size(); i++){
-    total = total + cartItems.at(i).GetPrice()*cartItems.at(i).GetQuantity();
+    total = total + (cartItems.at(i).GetPrice() * cartItems.at(i).GetQuantity());
   }
 return total;
 }
 
 void ShoppingCart::PrintTotal(){
   if(cartItems.size() == 0){
-    cout << "Number of Items: " << cartItems.size() << endl;
-    cout<<endl;
-    cout << "SHOPPING CART IS EMPTY" << endl;
+      cout << "Number of Items: " << GetNumItemsInCart() << endl;
+      cout << endl;
+      cout << "SHOPPING CART IS EMPTY" << endl;
   }
   else{
-     int numItems=0;
-      for(int i=0; i<cartItems.size(); i++){
-         numItems=numItems+cartItems.at(i).GetQuantity();
-      }
-      cout << "Number of Items: " << numItems << endl;
-      cout<<endl;
+      cout << "Number of Items: " << GetNumItemsInCart() << endl;
+      cout << endl;
       for(int i=0; i<cartItems.size(); i++){
        cartItems.at(i).PrintItemCost();
     }
