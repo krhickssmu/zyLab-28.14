@@ -14,7 +14,7 @@ ItemToPurchase::ItemToPurchase(string name, string description, int price, int q
   itemName=name;
   itemDescription=description;
   itemPrice=price;
-  itemQuantity=0;
+  itemQuantity=quantity;
 }
 
 //setters
@@ -47,8 +47,10 @@ int ItemToPurchase::GetQuantity() const{
 
 //printers
 void ItemToPurchase::PrintItemCost(){
-  cout<<itemName<<" "<<itemQuantity<<" @ $"<<itemPrice<<" = "<<itemQuantity*itemPrice<<endl;
+  cout<<itemName<<" "<<itemQuantity<<" @ $"<<itemPrice;
+  cout << " = $"<<itemQuantity*itemPrice<<endl;
 }
+
 void ItemToPurchase::PrintItemDescription(){
   cout<<itemName<<": "<<itemDescription<<endl;
 }
