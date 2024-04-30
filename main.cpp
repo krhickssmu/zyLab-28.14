@@ -1,3 +1,6 @@
+//Team member: Ruth Assefa
+//Team member: Kaitlyn Hicks
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
